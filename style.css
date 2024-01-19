@@ -1,0 +1,499 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #faf8ef;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Game Container Styles */
+#game-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Added this line for dynamic tile sizing */
+    grid-template-rows: repeat(4, 1fr); /* Added this line for dynamic tile sizing */
+    gap: 1vw;
+    background-color: #bbada0;
+    padding: 1vw;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Title Styles */
+.cool-title {
+    text-align: center;
+    color: #776e65;
+    font-size: 18px;
+    margin-top: 80px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        height: 115vh;
+    }
+
+    .cool-title {
+        margin-top: 10px;
+    }
+
+    #game-container {
+        gap: 3vw;
+    }
+
+    /* Adjust the margin for both top-bottom and left-right gaps */
+    .tile {
+        margin: 5px 2px; /* You can experiment with these values */
+    }
+}
+
+/* Tile Styles */
+.tile {
+    width: 100%; /* Adjusted to fill the entire grid cell */
+    height: 100%; /* Adjusted to fill the entire grid cell */
+    max-width: 100%;
+    margin: 0.2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #776e65;
+    background-color: #eee4da;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.tile i {
+    font-size: 2vw;
+    color: #ffffff;
+}
+
+
+/* Tile Number Styles */
+.tile .tile-number {
+    font-size: 1em; /* Default font size */
+}
+
+.tile-2 .tile-number,
+.tile-4 .tile-number,
+.tile-8 .tile-number {
+    font-size: 2.8em /* Triple size */
+}
+
+.tile-16 .tile-number,
+.tile-32 .tile-number,
+.tile-64 .tile-number {
+    font-size: 2.5em /* Double size */
+}
+
+.tile-128 .tile-number,
+.tile-256 .tile-number,
+.tile-512 .tile-number {
+    font-size: 2.3em /* Slightly larger than default */
+}
+
+.tile-1024 .tile-number,
+.tile-2048 .tile-number {
+    font-size: 2.1em /* Back to default size for quad digits */
+}
+
+@media screen and (max-width: 220px) {
+
+    .tile-2 .tile-number,
+    .tile-4 .tile-number,
+    .tile-8 .tile-number {
+        font-size: 1.5em; /* Triple size */
+    }
+
+    .tile-16 .tile-number,
+    .tile-32 .tile-number,
+    .tile-64 .tile-number {
+        font-size: 1.2em; /* Double size */
+    }
+
+    .tile-128 .tile-number,
+    .tile-256 .tile-number,
+    .tile-512 .tile-number {
+        font-size: 0.9em; /* Slightly larger than default */
+    }
+
+    .tile-1024 .tile-number,
+    .tile-2048 .tile-number {
+        font-size: 0.7em; /* Back to default size for quad digits */
+    }
+}
+
+
+/* Tile Number Styles */
+.tile-2 { background-color: #e7d5c4; color: #776e65; }
+.tile-4 { background-color: #e9d8b9; color: #776e65; }
+.tile-8 { background-color: #f2b179; color: #f9f6f2; }
+.tile-16 { background-color: #f59563; color: #f9f6f2; }
+.tile-32 { background-color: #f67c5f; color: #f9f6f2; }
+.tile-64 { background-color: #f65e3b; color: #f9f6f2; }
+.tile-128 { background-color: #edcf72; color: #f9f6f2; }
+.tile-256 { background-color: #edcc61; color: #f9f6f2; }
+.tile-512 { background-color: #edc850; color: #f9f6f2; }
+.tile-1024 { background-color: #edc53f; color: #f9f6f2; }
+.tile-2048 { background-color: #edc22e; color: #f9f6f2; }
+.tile-4096 { background-color: #f1be14; color: #f9f6f2; }
+
+/* Content Container Styles */
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Scoreboard Styles */
+#scoreboard {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #776e65;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    text-align: center;
+}
+
+/* Score Box Styles */
+.score-box,
+.best-box,
+.moves-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Label and Value Styles */
+.label,
+.value {
+    font-size: 16px;
+    color: #f9f6f2;
+}
+
+/* Button Styles */
+#new-game-btn,
+#help-button,
+#reshuffle-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #8f7a66;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#new-game-btn:hover,
+#help-button:hover,
+#reshuffle-btn:hover {
+    background-color: #a08c79;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal Content Styles */
+.modal-content,
+#help-modal .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    width: 80%;
+}
+
+/* Close Button Styles */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Help Modal Content Styles */
+#help-modal .modal-content {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    width: 80%;
+    margin: 10% auto;
+    position: relative;
+}
+
+/* Help Modal Title Styles */
+#help-modal h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Close Button Styles in Help Modal */
+#help-modal .close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#help-modal .close:hover,
+#help-modal .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Icon Background Styles */
+.icon-background {
+    background-size: cover;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Reshuffle Button Styles */
+#reshuffle-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #8f7a66;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#reshuffle-btn:hover {
+    background-color: #a08c79;
+}
+
+/* Default Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(51, 51, 51, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    color: rgba(12, 12, 12, 0.9);
+    z-index: 2;
+}
+
+/* Modal Content Styles */
+.modal-content {
+    text-align: center;
+}
+
+/* Close Button Styles in Game Over Modal */
+#game-over-modal .close {
+    display: none;
+}
+
+/* Retry Button Styles in Game Over Modal */
+#game-over-modal #retry-button {
+    background-color: #4caf50;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* Hover Effect for Retry Button in Game Over Modal */
+#game-over-modal #retry-button:hover {
+    background-color: #45a049;
+}
+
+/* Congratulation Modal Styles */
+#congratulation-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 2;
+}
+
+/* Congratulation Modal Title Styles */
+#congratulation-modal h2 {
+    color: #4CAF50;
+}
+
+/* Congratulation Modal Paragraph Styles */
+#congratulation-modal p {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Congratulation Modal Button Styles */
+#congratulation-modal button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+/* Hover Effect for Continue and Restart Buttons in Congratulation Modal */
+#congratulation-modal #continue-button:hover,
+#congratulation-modal #restart-button:hover {
+    background-color: #2980b9;
+}
+
+/* Restart Button Styles in Congratulation Modal */
+#congratulation-modal #restart-button {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+/* Donation Section Styles */
+#donation-section {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Donation Links Styles */
+.donation-links {
+    margin-top: 1px;
+}
+
+/* Donation Link Styles */
+.donation-links a {
+    text-decoration: none;
+    margin: 0 10px;
+    display: inline-block;
+    padding: 10px 10px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    color: #007bff;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Bitcoin and UPI Donation Styles */
+#btc-donation,
+#upi-donation {
+    background-color: #b68150;
+    color: #fff;
+}
+
+/* Hover Effect for Donation Links */
+.donation-links a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Tooltip Styles for Donation Links */
+.donation-links a {
+    position: relative;
+}
+
+.donation-links #btc-donation:hover::before {
+    content: "113L6u3QJcpURwBAxEP2ACpEDmBZdHcctY";
+}
+
+.donation-links #upi-donation:hover::before {
+    content: "Click to open the QR code";
+}
+
+.donation-links a:hover::before {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #776e65;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.donation-links a:hover::before {
+    opacity: 1;
+}
+
+/* Navigation Menu Link Styles */
+#menu-link {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Styles for Navigation Menu Link */
+#menu-link a {
+    text-decoration: none;
+    color: #fff;
+}
